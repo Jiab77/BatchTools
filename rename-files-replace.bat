@@ -1,6 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 title Filename modifier
+
 :loop
 for %%a in (cls echo echo) do %%a.
 set /p folder=Rename in folder ? : 
@@ -12,14 +13,19 @@ if "%strRemove%"=="" (
 	goto loop
 )
 pushd "%folder%"
-for /f %%n in ('dir /b/s/a-d *.%fileExt%*') do (
+for /f "delims=;" %%n in ('dir /b/s/a-d *.%fileExt%*') do (
 	set src=%%~nxn
-	echo While rename !src! TO !src:%strRemove%=%strReplace%!
+	echo While rename: !src!
+	To: !src:%strRemove%=%strReplace%!
+	echo.
 )
 echo. & echo Press any key to confirm... & pause >NUL & echo.
-for /f %%n in ('dir /b/s/a-d *.%fileExt%*') do (
+for /f "delims=;" %%n in ('dir /b/s/a-d *.%fileExt%*') do (
 	set src=%%~nxn
-	echo Renaming !src! TO !src:%strRemove%=%strReplace%! & ren "%%~dpn\!src!" "!src:%strRemove%=%strReplace%!"
+	echo Renaming: !src!
+	To: !src:%strRemove%=%strReplace%!
+	ren "%%~dpn\!src!" "!src:%strRemove%=%strReplace%!"
+	echo Done. & echo.
 )
 popd
 echo. & pause & exit
