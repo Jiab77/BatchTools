@@ -11,7 +11,7 @@ echo.
 if "%strRemove%"=="" (
 	goto loop
 )
-pushd %folder%
+pushd "%folder%"
 for /f %%n in ('dir /b/s/a-d *.%fileExt%*') do (
 	set src=%%~nxn
 	echo While rename !src! TO !src:%strRemove%=%strReplace%!
@@ -19,7 +19,7 @@ for /f %%n in ('dir /b/s/a-d *.%fileExt%*') do (
 echo. & echo Press any key to confirm... & pause >NUL & echo.
 for /f %%n in ('dir /b/s/a-d *.%fileExt%*') do (
 	set src=%%~nxn
-	echo Renaming !src! TO !src:%strRemove%=%strReplace%! & ren %%~dpn\!src! !src:%strRemove%=%strReplace%!
+	echo Renaming !src! TO !src:%strRemove%=%strReplace%! & ren "%%~dpn\!src!" "!src:%strRemove%=%strReplace%!"
 )
 popd
 echo. & pause & exit
