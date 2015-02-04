@@ -11,6 +11,7 @@ echo.
 if "%strRemove%"=="" (
 	goto loop
 )
+pushd "%folder%"
 for /f "delims=;" %%n in ('dir /b/s/a-d *.%fileExt%*') do (
 	set src=%%~nxn
 	echo While rename: !src!
