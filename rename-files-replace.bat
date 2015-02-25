@@ -23,7 +23,7 @@ echo. & echo Press any key to confirm... & pause >NUL & echo.
 for /f "delims=;" %%n in ('dir /b/s/a-d *.%fileExt%*') do (
 	set src=%%~nxn
 	echo Renaming: !src!
-	To: !src:%strRemove%=%strReplace%!
+	echo To: !src:%strRemove%=%strReplace%!
 	ren "%%~dpn\!src!" "!src:%strRemove%=%strReplace%!"
 	echo Done. & echo.
 )
