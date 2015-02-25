@@ -16,7 +16,7 @@ pushd "%folder%"
 for /f "delims=;" %%n in ('dir /b/s/a-d *.%fileExt%*') do (
 	set src=%%~nxn
 	echo While rename: !src!
-	To: !src:%strRemove%=%strReplace%!
+	echo To: !src:%strRemove%=%strReplace%!
 	echo.
 )
 echo. & echo Press any key to confirm... & pause >NUL & echo.
