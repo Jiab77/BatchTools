@@ -1,13 +1,13 @@
 @echo off
-setlocal enabledelayedexpansion
+setlocal EnableDelayedExpansion
 title Filename modifier
 
 :loop
 for %%a in (cls echo echo) do %%a.
-set /p folder=Rename in folder ? : 
-set /p fileExt=Looking for file extension ? : 
-set /p strRemove=String to remove from filenames ? : 
-set /p strReplace=String to replace the removed part ? : 
+set /p folder=Rename in folder ? :
+set /p fileExt=Looking for file extension ? :
+set /p strRemove=String to remove from filenames ? :
+set /p strReplace=String to replace the removed part ? :
 echo.
 if "%strRemove%"=="" (
 	goto loop
